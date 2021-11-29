@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta class="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .code {
+      width: auto;
+      height: 500px;
+      border: 3px solid black;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .digit {
+      height: 10%;
+      width: 10%;
+      margin: 3px;
+    }
+  </style>
+  <body>
+    <label for="code">Verification Code (8 characters):</label>
+    <form class="code">
+      <input type="text" id="digit1" class="digit" maxlength="1" />
+      <input type="text" id="digit2" class="digit" maxlength="1" />
+      <input type="text" id="digit3" class="digit" maxlength="1" />
+      <input type="text" id="digit4" class="digit" maxlength="1" />
+      <input type="text" id="digit5" class="digit" maxlength="1" />
+      <input type="text" id="digit6" class="digit" maxlength="1" />
+    </form>
+
+    <script>
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => {
+        if (input.nextElementSibling) {
+          input.addEventListener("keyup", () => {
+            input.nextElementSibling.focus();
+          });
+        }
+      });
+
+      inputs.forEach((input, index) => {
+        input.addEventListener("paste", (event) => {
+          const paste = event.clipboardData.getData("text");
+          const pasteArr = paste.split("");
+          for (let i = 0; i < pasteArr.length; i++) {
+            inputs[index + 1].value = pasteArr[i];
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
