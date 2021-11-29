@@ -16,7 +16,7 @@ more.addEventListener("click", () => {
 less.addEventListener("click", () => {
   let size = compStyles.getPropertyValue("font-size");
   size = parseInt(size);
-  if (size >= 21) {
+  if (size >= 11) {
     size = size - 5;
     h2.style.fontSize = size.toString() + "px";
   }
