@@ -7,21 +7,20 @@
     <title>Document</title>
   </head>
   <style>
-    figure {
-      height: 500px;
-      width: auto;
+    .lamp {
+      height: 400px;
+      width: 400px;
+      display: inline-block;
+      background-image: url("./img/off.jpg");
+      background-size: 100% 100%;
     }
-    img {
-      height: 100%;
-      width: auto;
+
+    .lamp.on {
+      background-image: url("./img/on.jpg");
     }
   </style>
   <body>
-    <figure>
-      <img src="img/off.jpg" alt="bulb" id="off" />
-
-      <img src="img/on.jpg" alt="bulb" id="on" hidden />
-    </figure>
+    <div class="lamp"></div>
   </body>
   <script src="/21.4 light bulb/index.js"></script>
 </html>

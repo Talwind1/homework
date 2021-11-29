@@ -43,7 +43,7 @@
       });
 
       inputs.forEach((input, index) => {
-        input.addEventListener("paste", (event) => {
+        input[0].addEventListener("paste", (event) => {
           const paste = event.clipboardData.getData("text");
           const pasteArr = paste.split("");
           for (let i = 0; i < pasteArr.length; i++) {
