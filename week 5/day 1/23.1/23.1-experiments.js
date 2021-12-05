@@ -1,4 +1,4 @@
-//console.log(this);
+console.log(this);
 
 // const myObj = {
 //   name: "Timmy",
@@ -20,6 +20,6 @@
 // myFuncArrow();
 
 //ques5
-document.querySelector(".element").addEventListener(() => {
-  console.log(this);
-});
+// document.querySelector(".element").addEventListener(() => {
+//   console.log(this);
+// });
