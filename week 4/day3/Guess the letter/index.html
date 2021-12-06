@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer type="module"></script>
+    <title>Document</title>
+    
+  
+  
+  <style>
+    * {
+  text-align: center;
+  font-weight: bold ;
+}
+.game {
+  position: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+h1 {
+  position: flex;
+  align-items: center;
+  font-size: 44px;
+  
+  padding: 30px;
+}
+.quesMark {
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  position: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quesMark p {
+  position: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.message {
+  font-size: 24px;
+  
+}
+
+.wrong {
+  padding: 10px;
+  margin: 10px;
+  font-size: 30px;
+
+}
+
+  </style>
+  </head>
+  <body>
+    <div class="game">
+      <h1>Welcome to Guess My Letter</h1></li>
+
+      <div class="quesMark title"><h2>?</h2></div>
+
+      <div class="message title"><h3 class="start">Guess a letter</h3>
+      
+        <h3 hidden class="not-valid">"please enter a valid letter"</h3></div>
+
+      <div class="wrong title"><h2>Keys guessed</h2></div>
+
+      <button hidden class="title">yes</button>
+
+      <div class="letters title" hidden>""</div>
+    </div>
+  </body>
+</html>
