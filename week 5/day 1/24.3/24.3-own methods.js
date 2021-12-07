@@ -30,3 +30,6 @@ Array.prototype.reduce = function (reducer) {
   }
   return ans;
 };
+
+let a = new Array();
+console.log(a);
