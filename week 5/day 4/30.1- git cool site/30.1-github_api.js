@@ -1,7 +1,11 @@
 const btn = document.getElementById("btn");
 btn.addEventListener("click", getUrl);
+btn.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    getUrl();
+  }
+});
 const page = document.getElementById("page");
-// const data = [];
 
 async function getUrl() {
   const username = document.getElementById("userInput").value;
