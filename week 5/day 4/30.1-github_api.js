@@ -1,29 +1,42 @@
 const btn = document.getElementById("btn");
 btn.addEventListener("click", getUrl);
-const imgContainer = document.getElementById("img-container");
-const container = document.getElementById("container");
+const page = document.getElementById("page");
 // const data = [];
 
 async function getUrl() {
   const username = document.getElementById("userInput").value;
   try {
     const userUrl = await fetch(`https://api.github.com/users/${username}`);
-
+    const valid = userUrl.ok;
     const userUrlJs = await userUrl.json();
-    createCard(userUrlJs);
-    console.log(userUrlJs);
+
+    if (valid) createCard(userUrlJs);
   } catch (error) {
     console.log(error);
   }
 }
-
+const users = [];
 function createCard(data) {
-  avatarUrl = data.avatar_url;
-  let img = document.createElement("img");
-  img.src = avatarUrl;
-  imgContainer.appendChild(img);
-  let title = document.createElement("h2");
-  console.log(data.login);
-  title.innerText = data.login;
-  container.appendChild(title);
+  let user = data.login;
+  if (!users.includes(user)) {
+    users.push(user);
+    const container = document.createElement("div");
+    container.classList.add("container");
+    const imgContainer = document.createElement("div");
+    imgContainer.classList.add("img-container");
+    container.appendChild(imgContainer);
+    page.appendChild(container);
+    avatarUrl = data.avatar_url;
+    const img = document.createElement("img");
+    img.src = avatarUrl;
+    imgContainer.appendChild(img);
+    const title = document.createElement("a");
+    title.href = data.html_url;
+    title.innerText = data.login;
+    container.appendChild(title);
+    const details = document.createElement("h3");
+    details.classList.add("title");
+    details.innerText = `posts ${data.public_repos} repositories`;
+    container.appendChild(details);
+  }
 }
