@@ -23,7 +23,7 @@ function getRes() {
         plot: data.Plot,
         director: data.Director,
         actors: data.Actors,
-        rating: data.Rating,
+        rating: data.Ratings,
       };
       createCard(movieObj);
     })
@@ -51,7 +51,7 @@ function createCard(data) {
   details.appendChild(title);
 
   const genre = document.createElement("h2");
-  genre.innerText = `genre: ${data.genre}`;
+  genre.innerText = `Genre: ${data.genre}`;
   details.appendChild(genre);
 
   const year = document.createElement("h2");
@@ -67,6 +67,14 @@ function createCard(data) {
   details.appendChild(director);
 
   const actors = document.createElement("h2");
+  actors.innerText = `Actors: ${data.actors}`;
+  details.appendChild(actors);
+
+  const rating = document.createElement("h2");
+  for (i of data.rating) {
+    rating.innerText += `${i.Source}, rate: ${i.Value}`;
+  }
+  details.appendChild(rating);
   actors.innerText = `Actors: ${data.actors}`;
   details.appendChild(actors);
 }
