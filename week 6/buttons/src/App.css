@@ -1,3 +1,7 @@
+.important {
+  font-weight: bold;
+}
+
 .App {
   text-align: center;
 }
