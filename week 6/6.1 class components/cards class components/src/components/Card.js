@@ -5,8 +5,8 @@ const Card = (props) => {
     <div className="card">
       <img src={props.pic} alt="man"></img>
       <div className="info">
-        <span>{props.details}</span>
-        <a href={props.link}>share</a>
+        <div>{props.details}</div>
+        <a href={props.link}>Check It Out</a>
       </div>
     </div>
   );
