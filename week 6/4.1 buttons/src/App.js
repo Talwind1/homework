@@ -1,12 +1,12 @@
 import "./App.css";
-import Button from "./components/Button";
+import Q1 from "./components/Q1";
+
+import Q2 from "./components/Q2";
 
 function App() {
   return (
     <div className="App">
-      <Button content="Important" />
-
-      <Button content="Not Important" />
+      <Quiz />
     </div>
   );
 }
