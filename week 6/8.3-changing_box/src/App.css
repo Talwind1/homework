@@ -1,0 +1,51 @@
+#box {
+  width: 100px;
+  height: 100px;
+}
+
+.makeCircle {
+  border-radius: 50%;
+}
+
+.green {
+  background-color: chartreuse;
+}
+
+.red {
+  background-color: crimson;
+}
+
+.blue {
+  background-color: darkblue;
+}
+
+.App {
+  text-align: center;
+}
+
+.boxContainer {
+  position: relative;
+  width: 100vw;
+  /* overflow: hidden; */
+}
+
+.showBox {
+  /* position: absolute; */
+  background-color: rgb(231, 88, 172);
+  margin: 20px 0;
+  animation: left-to-right ease-in;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+}
+
+@keyframes left-to-right {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    max-width: 300px;
+  }
+}
