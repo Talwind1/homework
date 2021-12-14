@@ -1,31 +1,40 @@
-import React from "react";
-import { render } from "react-dom";
-import "./App.css";
+import './App.css';
+import React from 'react'
+
+import './App.css'
+
 
 class App extends React.Component {
-  state = {
-    favoriteColor: "red",
-  };
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ favoriteColor: "yellow" });
-    }, 3000);
+    
+  constructor(props){
+    super(props)
+    this.state ={status: ''}
   }
+  
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({status:'showBox'})
 
-  componentDidUpdate() {
-    document.querySelector(
-      "#empty"
-    ).innerText = `The updated favorite color is ${this.state.favoriteColor}`;
+    },2000)
   }
+  componentDidUpdate(){
+    setTimeout(()=>{
+      this.setState({status:''})
 
-  render() {
-    return (
-      <div className="App">
-        <h1>My favorite color is {this.state.favoriteColor}</h1>
-        <div id="empty"></div>
-      </div>
-    );
+    },4000)
   }
+  
+  render (){
+    return(
+      <div className="boxContainer">
+        <div className={this.state.status} style={{width:'300px' ,height:'300px'}}></div>
+        <div className={this.state.status} style={{width:'200px' ,height:'200px'}}></div>
+        <div className={this.state.status} style={{width:'150px' ,height:'150px'}}></div>
+
+  </div>
+  )
+  }      
+  
 }
+
 export default App;
