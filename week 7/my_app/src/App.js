@@ -8,6 +8,8 @@ class App extends react.Component {
     error: "",
     randomJoke: null,
     categories: null,
+    inputValue: null,
+    list: [],
   };
 
   generateJoke = async () => {
@@ -32,6 +34,21 @@ class App extends react.Component {
     this.setState({ randomJoke: data.value, isLoading: false });
   };
 
+  generateInput = async (e) => {
+    this.setState({ isLoading: true });
+    let inputValue = e.target.value;
+    this.setState({ inputValue });
+    const { data } = await axios.get(
+      `https://api.chucknorris.io/jokes/search?query=${inputValue}`
+    );
+    let list = [];
+    data.result.map((item) => {
+      list.push(item.value);
+    });
+    // console.log(data.result);
+    this.setState({ list, isLoading: false });
+  };
+
   render() {
     const generateCategories = () => {
       if (this.state.categories) {
@@ -50,6 +67,7 @@ class App extends react.Component {
         });
       }
     };
+
     return (
       <div className="App">
         <button onClick={this.generateJoke}>generate a joke</button>
@@ -60,6 +78,12 @@ class App extends react.Component {
         )}
         <button onClick={this.categories}>categories</button>
         {generateCategories()}
+
+        <input
+          onChange={this.generateInput}
+          value={this.state.inputValue}
+        ></input>
+        {this.state.list}
       </div>
     );
   }
