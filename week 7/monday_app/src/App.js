@@ -1,16 +1,14 @@
 import "./App.css";
-import React, { Component } from "react";
-
+import react from "react";
 import Input from "./Input";
 
-export default class App extends Component {
-  state = {};
+class App extends react.Component {
   render() {
     return (
       <div className="App">
-        <h1>hello</h1>
         <Input />
       </div>
     );
   }
 }
+export default App;
