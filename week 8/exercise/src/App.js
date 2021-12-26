@@ -1,37 +1,41 @@
 import "./App.css";
 import react, { useState } from "react";
-import Checkbox from "./Checkbox";
 
 function App() {
-  const [data, setData] = useState([
-    { name: "one", checked: false },
-    { name: "two", checked: false },
-    { name: "three", checked: false },
-    { name: "four", checked: false },
-    { name: "five", checked: false },
-  ]);
+  const [hour, setHour] = useState(0);
 
-  const setChecked = (index) => {
-    const dataCopy = [...data];
-    dataCopy[index].checked = !data[index].checked;
-    setData(dataCopy);
+  const [min, setMin] = useState(0);
+
+  const [sec, setSec] = useState(0);
+
+  const setTime = () => {
+    console.log(e);
   };
 
   return (
     <div className="App">
-      {data.map((item, index) => {
-        if (!item.checked) {
-          return (
-            <li key={item.name}>
-              <Checkbox idx={index} checkUpdate={setChecked} />
-              {item.name}
-            </li>
-          );
-        }
-      })}
-      {/* <button onClick={remove}>delete</button> */}
-
-      <button>reset</button>
+      {/* style={{ display: "flex", flexDirection: "row" } */}
+      <span>Seconds</span>
+      <input
+        type="text"
+        //  value={timeData.sec}
+        name="sec"
+        onChange={setTime}
+      ></input>
+      <span>Minutes</span>
+      <input
+        type="text"
+        //      value={timeData.min}
+        name="min"
+        onChange={setTime}
+      ></input>
+      <span>Hours</span>
+      <input
+        type="text"
+        //  value={timeData.hour}
+        name="hour"
+        onChange={setTime}
+      ></input>
     </div>
   );
 }
