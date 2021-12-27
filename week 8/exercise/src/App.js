@@ -1,34 +1,27 @@
 import "./App.css";
-import react, { useState } from "react";
-import Checkbox from "./Checkbox";
+import axios from "axios";
+import react, { useState, useEffect } from "react";
 
 function App() {
-  const [activeItems, setActiveItems] = useState([
-    { name: "one", checked: false },
-    { name: "two", checked: false },
-    { name: "three", checked: false },
-    { name: "four", checked: false },
-    { name: "five", checked: false },
-  ]);
-  const [selectedItems, setSelectedItems] = useState([]);
-  const deleteItems = () => {
-    setActiveItems(activeItems.filter((item) => !selectedItems.includes(item)));
-  };
-  const resetItems = () => {
-    setSelectedItems = [];
-  };
+  const [movies, setMovies] = useState(null);
+
+  useEffect(() => {
+    const searchMovie = async () => {
+      const { data } = await axios.get("https://swapi.dev/api/films/1");
+      setMovies(data);
+      console.log(data);
+    };
+    searchMovie();
+  }, []);
+
   return (
     <div className="App">
-      {activeItems.map((item, index) => {
-        return (
-          <li key={item.name}>
-            <input type="checkbox" isChecked={selectedItems.includes(item)} />
-            {item.name}
-          </li>
-        );
-      })}
-      <button onClick={deleteItems}>Delete</button>
-      <button onClick={resetItems}>Reset</button>
+      {{ movies } && (
+        <div>
+          <h1>{movies.title}</h1>
+          <h2>By: {movies.director}</h2>
+        </div>
+      )}
     </div>
   );
 }
