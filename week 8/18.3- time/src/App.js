@@ -2,24 +2,27 @@ import "./App.css";
 import react, { useState } from "react";
 
 function App() {
-  const [timeData, setTimeData] = useState({ sec: "", min: "", hour: "" });
-  const renderData = (e) => {
-    const name = e.target.name;
+  const [hour, setHour] = useState(0);
+
+  const [min, setMin] = useState(0);
+
+  const [sec, setSec] = useState(0);
+
+  const handleTime = (name, value) => {
     // switch (name) {
-    //   case "sec":
-    const newTime = {
-      sec: timeData.sec,
-      min: timeData.sec / 60,
-      hour: timeData.sec / 360,
-    };
-    setTimeData(newTime);
-    // break;
-    // case 'min'
-    // ////
-    // break;
-    // case 'hour'
-    // ////
-    // break;
+    if (name === "sec") {
+      setSec(value);
+      setMin(value / 60);
+      setHour(value / 3600);
+    } else if (name === "min") {
+      setSec(value * 60);
+      setMin(value);
+      setHour(value / 60);
+    } else {
+      setSec(value * 3600);
+      setMin(value * 60);
+      setHour(value);
+    }
   };
 
   return (
@@ -28,23 +31,23 @@ function App() {
       <span>Seconds</span>
       <input
         type="text"
-        //  value={timeData.sec}
+        value={sec}
         name="sec"
-        onChange={renderData}
+        onChange={(e) => handleTime(e.target.name, e.target.value)}
       ></input>
       <span>Minutes</span>
       <input
         type="text"
-        //      value={timeData.min}
+        value={min}
         name="min"
-        onChange={renderData}
+        onChange={(e) => handleTime(e.target.name, e.target.value)}
       ></input>
       <span>Hours</span>
       <input
         type="text"
-        //  value={timeData.hour}
+        value={hour}
         name="hour"
-        onChange={renderData}
+        onChange={(e) => handleTime(e.target.name, e.target.value)}
       ></input>
     </div>
   );
