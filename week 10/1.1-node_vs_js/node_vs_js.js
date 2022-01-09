@@ -9,7 +9,7 @@
 // browser has document (like documeny query selector)
 //
 
-//3. node.js has file system , js doesn't has it.
+//3. node.js has file system , js doesn't have it.
 
 //4.(Extra): node.js doesn't have an access to local storage. Js has an acess to local storage.
 
