@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
-const { boolean } = require("optimist");
+// const { boolean } = require("optimist");
 const validator = require("validator");
 
-mongoose.connect("mongodb://127.0.0.1:27017/task-manager-api", {
-  userNewUeelParser: true,
-  useCreateIndex: true,
+mongoose.connect("mongodb://127.0.0.1:27017/e-commerce", {
+  useNewUrlParser: true,
 });
 
-const User = mongoose.model("Product", {
+const product = mongoose.model("product", {
   name: { type: String, require: true, unique: true },
-  Categorty: { type: String, require: true },
-  isActive: { type: boolean },
-  details: { description: String, minLength: 10 },
+  categorty: { type: String, require: true },
+  isActive: { type: Boolean },
+  details: { type: String, minLength: 10 },
   price: {
     type: Number,
     validate(value) {
@@ -23,10 +22,9 @@ const User = mongoose.model("Product", {
   discount: { require: false, default: 0 },
   images: { type: Array, minlength: 2 },
   phone: {
-    type: Number,
-    validate(vaue) {
-      if (!validator.isMobilePhoneLocales(value)) {
-        //'he-IL'
+    type: String,
+    validate(value) {
+      if (!validator.isMobilePhone(value, "he-IL")) {
         throw Error("Must be Israeli phone number");
       }
     },
@@ -34,11 +32,21 @@ const User = mongoose.model("Product", {
   DateAdded: { type: Date, default: Date() },
 });
 
-product
+const tshirt = new product({
+  name: "tshirt",
+  category: "clothes",
+  isActive: false,
+  details: "an amzing tshirt black color for occations",
+  price: 40,
+  images: [{ url: "beautifultshirt.com" }, { url: "beautifultshirt2.com" }],
+  phone: "+972525482429",
+});
+
+tshirt
   .save()
   .then(() => {
-    console.log(product);
+    console.log("suceess adding tshirt", tshirt);
   })
   .catch((error) => {
-    console.log("Error".error);
+    console.log("Error", error);
   });
