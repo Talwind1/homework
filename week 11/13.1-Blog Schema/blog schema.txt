@@ -1,0 +1,13 @@
+Blog Schema:
+
+# collections:
+-users:    - embedded data: id, name, avatar, date of birth, etc. 
+	- references data: his posts, comments (of the user)
+
+-posts    - embedded data: id, date of creation, content, 
+	- references data:  writer,  comments(?)
+
+
+-comments    - embedded data: id, date of creation, content, 
+	       - references data:  writer, post-id
+
