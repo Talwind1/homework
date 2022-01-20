@@ -1,7 +1,19 @@
 {
   "dependencies": {
     "mongoose": "^6.1.7",
+    "nodemon": "^2.0.15",
     "require": "^2.4.20",
     "validator": "^13.7.0"
-  }
+  },
+  "name": "17.1-product_model",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
