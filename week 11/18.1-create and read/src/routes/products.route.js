@@ -59,6 +59,22 @@ router.get("/products/pricefilter", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
+
+router.patch("/products/:id", async (req, res) => {
+  const product = req.body;
+const isAllowedUpdates=[""]
+  try {
+    if (!product.isValidate){
+      res.status(404).send({ error: "No product" });
+    }
+    let products = Products.find({});
+    
+    res.send(products);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;
 
 //creat a new product
